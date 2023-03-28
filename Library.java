@@ -26,6 +26,7 @@ public class Library extends Building {
     }
 
     public void checkOut(String title){
+      // make sure we have the book to even check it out
       this.collection.replace(title, false);
     }
 
