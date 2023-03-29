@@ -48,10 +48,19 @@ public class Cafe extends Building {
     }
 
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
-        this.nCoffeeOunces = nCoffeeOunces;
-        this.nSugarPackets = nSugarPackets;
-        this.nCreams = nCreams;
-        this.nCups = nCups;
+        if (this.nCoffeeOunces < nCoffeeOunces){
+            this.nCoffeeOunces = nCoffeeOunces;
+        }
+        if(this.nSugarPackets < nSugarPackets){
+            this.nSugarPackets = nSugarPackets;
+        }
+        if (this.nCreams < nCreams){
+            this.nCreams = nCreams;
+        }
+        if (this.nCups < nCups){
+            this.nCups = nCups;
+        }
+
     }
     public static void main(String[] args) {
         Cafe myCafe = new Cafe("Compass Cafe", "Neilson Library", 1, 12, 4, 4, 2);

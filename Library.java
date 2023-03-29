@@ -16,22 +16,63 @@ public class Library extends Building {
 
 
     public void addTitle(String title){
-      this.collection.put(title, true);
+      try{
+        if (this.collection.containsKey(title)){
+          throw new RuntimeException("This book is already in the library cannot add again.");
+        }
+        this.collection.put(title, true);
+      }
+        catch(RuntimeException e){
+          System.out.println(e);
+        }
     }
 
     // return the title that we removed
     public String removeTitle(String title){
+      try{
+      if (!this.collection.containsKey(title)){
+        throw new RuntimeException("This book is not in the library.");
+      }
       this.collection.remove(title);
+      }
+      catch(RuntimeException e) {
+        System.out.println(e);
+      }
       return title;
     }
 
     public void checkOut(String title){
-      // make sure we have the book to even check it out
-      this.collection.replace(title, false);
-    }
+      try{
+        if (!this.collection.containsKey(title)){
+          throw new RuntimeException("This book is not in the library.");
+        }
+        else if(this.collection.get(title).equals(false)){
+          throw new RuntimeException("This book is currently checked out sorry.");
+        }
+        this.collection.replace(title, false);
+        System.out.println(title + " was successfully checked-out!");
+        }
+        catch(RuntimeException e) {
+          System.out.println(e);
+        }
+      }
 
     public void returnBook(String title){
-      this.collection.replace(title, true);
+      try{
+        if(!this.collection.containsKey(title)){
+          throw new RuntimeException("Cannot return " + title + " because the library does not own this.");
+        }
+        else if(this.collection.get(title).equals(true)){
+          throw new RuntimeException("This book has already been returned to the library.");
+        }
+        this.collection.replace(title, true);
+        System.out.println(title + " was successfully returned!");
+        }
+
+        catch(RuntimeException e){
+          System.out.println(e);
+        }
+  
     }
 
     // returns true if the title appears as a key in the Libary's collection, false otherwise
@@ -72,6 +113,13 @@ public class Library extends Building {
       Library neilson = new Library("Neilson", "7 Smith St", 4);
       neilson.addTitle("The Cat in The Hat By Dr. Seuss");
       System.out.println(neilson);
+      neilson.printCollection();
+      neilson.checkOut("The Cat in The Hat By Dr. Seuss");
+      neilson.checkOut("The Cat in The Hat By Dr. Seuss");
+      neilson.checkOut("The Bible");
+      neilson.returnBook("The Cat in The Hat By Dr. Seuss");
+      neilson.returnBook("The Cat in The Hat By Dr. Seuss");
+      neilson.returnBook("The Bible");
       neilson.printCollection();
 
 
