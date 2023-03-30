@@ -1,12 +1,11 @@
-/* This is a stub for the House class */
 import java.util.ArrayList;
 
-/* This is a stub for the House class */
 public class House extends Building {
 
   private ArrayList<String> residents;
   private boolean hasDiningRoom;
 
+  /* This is a constructor for the House class */
   public House(String name, String address, int nFloors, boolean hasDiningRoom) {
     super(name, address, nFloors);
     this.residents = new ArrayList<String>();
@@ -23,6 +22,10 @@ public class House extends Building {
     return this.residents.size();
   }
 
+  /**
+   * This moves in a person into a house if they do not already live there by adding them to an arraylist called residents
+   * @param String name
+   */
   public void moveIn(String name) {
     // check if this.residents contains name
     try{
@@ -41,6 +44,10 @@ public class House extends Building {
     
   }
 
+  /**
+   * This moves out a person of a house if they live there by removing them from the arraylist called residents
+   * @param String name
+   */
   public String moveOut(String name){
     try{
     if (!this.residents.contains(name)){
@@ -57,8 +64,13 @@ public class House extends Building {
     
   }
 
+  /**
+   * This checks if a person is a resident of a house
+   * @param String person
+   * @return a true or false statement
+   */
   public boolean isResident(String person) {
-    if (this.residents.contains(name)){
+    if (this.residents.contains(person)){
       return true;
     }
 
@@ -66,7 +78,11 @@ public class House extends Building {
       return false;
     }
   }
-
+ 
+  /**
+   * This updates the description of the building to also include the total residents and whether it has a dining room
+   * @return the updated description
+   */
   public String toString() {
     String description = super.toString();
     description += " There are currently " + this.nResidents() + " people living in this house.";

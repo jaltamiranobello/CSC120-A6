@@ -1,10 +1,11 @@
-/* This is a stub for the Cafe class */
+
 public class Cafe extends Building {
     private int nCoffeeOunces;
     private int nSugarPackets;
     private int nCreams; 
     private int nCups;
 
+    /* This is a constructor for the Cafe class */
     public Cafe(String name, String address, int nFloors, int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups) {
         super(name, address, nFloors);
         this.nCoffeeOunces = nCoffeeOunces;
@@ -13,22 +14,32 @@ public class Cafe extends Building {
         this.nCups = nCups;
     }
 
+    /** Accessor for nCoffeeOunces */
     public int getnCoffeeOunces(){
         return this.nCoffeeOunces;
     }
 
+    /** Accessor for nSugarPackets */
     public int getnSugarPackets(){
         return this.nSugarPackets;
     }
 
+    /** Accessor for nCreams */
     public int getnCreams(){
         return this.nCreams;
     }
 
+    /** Accessor for nCups */
     public int getnCups(){
         return this.nCups;
     }
     
+  /**
+   * This checks if there is enough inventory to make a coffee, if there is a coffee is sold
+   * @param1 int size
+   * @param2 int nSugarPackets
+   * @param3 int nCreams
+   */    
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
         try {
             if (this.nCoffeeOunces <= size - 1 | this.nSugarPackets <= nSugarPackets - 1 | this.nCreams <= nCreams - 1 | this.nCups == 0){
@@ -47,6 +58,13 @@ public class Cafe extends Building {
          }
     }
 
+  /**
+   * This checks what items are running low and restocks them to have enough to make the coffee that was just ordered
+   * @param1 int nCoffeeOunces
+   * @param2 int nSugarPackets
+   * @param3 int nCreams
+   * @param4 int nCups
+   */ 
     private void restock(int nCoffeeOunces, int nSugarPackets, int nCreams, int nCups){
         if (this.nCoffeeOunces < nCoffeeOunces){
             this.nCoffeeOunces = nCoffeeOunces;

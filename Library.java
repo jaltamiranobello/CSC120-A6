@@ -1,9 +1,9 @@
 import java.util.Hashtable;
 
-/* This is a stub for the Library class */
 public class Library extends Building {
     private Hashtable <String, Boolean> collection;
 
+    /* This is a constructor for the Library class */
     public Library(String name, String address, int nFloors) {
       super(name, address, nFloors);
       this.collection = new Hashtable <String, Boolean> ();
@@ -14,7 +14,10 @@ public class Library extends Building {
       return this.collection;
     }
 
-
+  /**
+   * This checks if a title is part of the collection and if not it adds it
+   * @param String title
+   */
     public void addTitle(String title){
       try{
         if (this.collection.containsKey(title)){
@@ -27,7 +30,11 @@ public class Library extends Building {
         }
     }
 
-    // return the title that we removed
+  /**
+   * This checks if a book is in a collection and if it is, it gets removed
+   * @param String title
+   * @return the title that we removed
+   */
     public String removeTitle(String title){
       try{
       if (!this.collection.containsKey(title)){
@@ -41,6 +48,10 @@ public class Library extends Building {
       return title;
     }
 
+  /**
+   * This checks if a book is in a collection and whether it is available, if both are true then it gets a false value
+   * @param String title
+   */
     public void checkOut(String title){
       try{
         if (!this.collection.containsKey(title)){
@@ -57,6 +68,10 @@ public class Library extends Building {
         }
       }
 
+  /**
+   * This checks if a book is in a collection and whether it is chekcked out, if both are true then it gets a true value
+   * @param String title
+   */      
     public void returnBook(String title){
       try{
         if(!this.collection.containsKey(title)){
@@ -75,7 +90,11 @@ public class Library extends Building {
   
     }
 
-    // returns true if the title appears as a key in the Libary's collection, false otherwise
+  /**
+   * This checks if a book is in a collection
+   * @param String title
+   * @return true if the title appears as a key in the Libary's collection, false otherwise
+   */
     public boolean containsTitle(String title){
       if (this.collection.containsKey(title)){
         return true;
@@ -85,8 +104,12 @@ public class Library extends Building {
       }
       
     }
-    
-    // returns true if the title is currently available, false otherwise
+
+  /**
+   * This checks if a book is available
+   * @param String title
+   * @return true if the title is currently available, false otherwise
+   */
     public boolean isAvailable(String title){
       if(this.collection.get(title).equals(true)){
         return true;
@@ -96,13 +119,19 @@ public class Library extends Building {
       }
     }
 
+  /**
+   * This updates the description of the building to also include the total books the library owns
+   * @return the updated description
+   */
     public String toString() {
       String description = super.toString();
       description += ". There are currently " + this.collection.size() + " books in this collection.";
       return description;
     }
 
-    // prints out the entire collection in an easy-to-read way (including checkout status)
+  /**
+   * prints out the entire collection in an easy-to-read way (including checkout status)
+   */
     public void printCollection() {
       System.out.println(this.collection.toString());
     } 
